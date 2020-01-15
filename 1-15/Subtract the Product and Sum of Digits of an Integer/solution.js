@@ -3,14 +3,10 @@
  * @return {number}
  */
 var subtractProductAndSum = function(n) {
-    var numString = String(n);
+    var numString = String(n).split("");
     
-    var mul = 1, sum = 0;
+    var sum = (accumulator, currentValue) => Number(accumulator) + Number(currentValue);
+    var mul = (accumulator, currentValue) => Number(accumulator) * Number(currentValue);
     
-    for(var i = 0; i < numString.length; i ++) {
-        mul *= Number(numString[i]);
-        sum += Number(numString[i]);
-    }
-        
-    return mul - sum;
+    return numString.reduce(mul) - numString.reduce(sum);
 };
